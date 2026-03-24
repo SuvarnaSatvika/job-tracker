@@ -1,0 +1,90 @@
+/* src/App.css */
+
+/* Import a modern font that matches your design (Inter) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #F8F3ED; /* The soft cream background from your screenshot */
+  color: #1A1A1A;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  min-height: 100vh;
+}
+
+/* --- Header Section (Title + Stats) --- */
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  gap: 4rem; /* Space between the text and the stats cards */
+}
+
+.header-text {
+  flex: 1;
+}
+
+.eyebrow-text {
+  color: #A04F2B;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.main-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0 0 1.5rem 0;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  color: #555555;
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 90%;
+}
+
+.header-stats {
+  flex: 1.2; /* Gives the stats grid slightly more room */
+}
+
+/* --- Main Content Section (Form + Trends) --- */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 1.5rem;
+}
+
+/* Temporary style for the empty Trend Summary box */
+.placeholder-box {
+  background-color: #FDF8F3;
+  border-radius: 24px;
+  padding: 2.5rem;
+  border: 1px solid #Fee6cc;
+}
+
+.placeholder-box h3 {
+  margin-top: 0;
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.placeholder-text {
+  background-color: #F3EAE1;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  color: #555;
+  font-size: 0.9rem;
+}

@@ -1,0 +1,39 @@
+/* src/components/StatsCards.module.css */
+
+.statsContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem; /* Spacing between the cards */
+}
+
+.card {
+  background-color: #FFFFFF;
+  border: 1px solid #F0F0F0;
+  border-radius: 20px; /* Soft rounded corners */
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02); /* Very faint shadow */
+  font-family: 'Inter', sans-serif;
+}
+
+.title {
+  color: #7A7A7A;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.number {
+  color: #1A1A1A;
+  font-size: 2.25rem; /* Large, bold numbers */
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: #A0A0A0;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
