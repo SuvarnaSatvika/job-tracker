@@ -88,3 +88,8 @@ body {
   color: #555;
   font-size: 0.9rem;
 }
+
+.table-section {
+  margin-top: 2rem;
+  width: 100%;
+}

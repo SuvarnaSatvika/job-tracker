@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import ApplicationForm from './components/ApplicationForm';
 import StatsCards from "./components/StatsCards";
+import ApplicationTable from "./components/ApplicationTable";
 import './App.css';
 
 function App(){
@@ -40,6 +41,10 @@ function App(){
                     </div>
                 </div>
             </main>
+
+            <section className="table-section">
+                <ApplicationTable refreshTrigger={refreshKey} />
+            </section>
         </div>
     );
 };

@@ -61,3 +61,43 @@
   color: #888888;
   font-size: 0.95rem;
 }
+
+.actionsCell {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.actionBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #A0A0A0;
+  transition: color 0.2s ease;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.actionBtn:hover {
+  color: #A04F2B;
+}
+
+.deleteBtn:hover {
+  color: #E53E3E; /* Red for delete hover */
+}
+
+/* Styles for when a row is in Edit Mode */
+.editInput, .editSelect {
+  width: 90%;
+  padding: 0.4rem;
+  border: 1px solid #EBE2D9;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+.editSelect {
+  background-color: white;
+}
