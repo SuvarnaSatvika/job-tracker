@@ -61,6 +61,7 @@ public class JobController {
             job.setRole(updatedJob.getRole());
             job.setAppliedDate(updatedJob.getAppliedDate());
             job.setStatus(updatedJob.getStatus());
+            job.setNotes(updatedJob.getNotes());
             job.setLastUpdated(updatedJob.getLastUpdated());
             return repository.save(job);
         }).orElseThrow(() -> new RuntimeException("Job not found"));

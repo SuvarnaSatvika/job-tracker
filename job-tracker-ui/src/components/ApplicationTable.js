@@ -3,7 +3,7 @@ import axios from "axios";
 import {Trash2, Edit2, Check, X} from 'lucide-react';
 import styles from './ApplicationTable.module.css'
 
-const ApplicationTable = ({refreshTrigger, onDataChange}) => {
+const ApplicationTable = ({refreshTrigger, onDataChange, onRowSelect}) => {
     const [applications, setApplications] = useState([]);
 
     const [editingId, setEditingId] = useState(null);
@@ -78,7 +78,7 @@ const ApplicationTable = ({refreshTrigger, onDataChange}) => {
                     </thead>
                     <tbody>
                         {applications.map((app) => (
-                            <tr key = {app.id}>
+                            <tr key = {app.id} onClick={() => onRowSelect(app)} style={{cursor:'pointer'}}>
                                 {editingId === app.id ? (
                                     <>
                                         <td className={styles.td}>

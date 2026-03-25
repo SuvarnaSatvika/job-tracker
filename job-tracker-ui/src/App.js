@@ -3,9 +3,11 @@ import ApplicationForm from './components/ApplicationForm';
 import StatsCards from "./components/StatsCards";
 import ApplicationTable from "./components/ApplicationTable";
 import './App.css';
+import Scratchpad from "./components/Scratchpad";
 
 function App(){
     const [refreshKey, setRefreshKey] = useState(0);
+    const [selectedApp, setSelectedApp] = useState(null);
 
     const handleAppAdded = () => {
         setRefreshKey(prevKey => prevKey + 1);
@@ -28,22 +30,12 @@ function App(){
             <main className="content-grid">
                 <ApplicationForm onAppAdded={handleAppAdded} />
 
-                <div className="placeholder-box">
-                    <div className="eyebrow-text">Trend Summary</div>
-                    <h3>What the data says</h3>
-
-                    <div className="placeholder-text">
-                        Start adding applications to see personalized trend analysis
-                    </div>
-
-                    <div className="placeholder-text">
-                        You will get summaries for rejection rate, pipeline health and monthly volume
-                    </div>
-                </div>
+                <Scratchpad selectedApp={selectedApp} onNotesSaved={handleAppAdded}
+                />
             </main>
 
             <section className="table-section">
-                <ApplicationTable refreshTrigger={refreshKey} onDataChange={handleAppAdded} />
+                <ApplicationTable refreshTrigger={refreshKey} onDataChange={handleAppAdded} onRowSelect={setSelectedApp} />
             </section>
         </div>
     );
