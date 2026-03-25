@@ -43,7 +43,7 @@ function App(){
             </main>
 
             <section className="table-section">
-                <ApplicationTable refreshTrigger={refreshKey} />
+                <ApplicationTable refreshTrigger={refreshKey} onDataChange={handleAppAdded} />
             </section>
         </div>
     );

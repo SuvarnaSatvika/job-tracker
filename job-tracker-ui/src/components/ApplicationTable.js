@@ -9,12 +9,6 @@ const ApplicationTable = ({refreshTrigger, onDataChange}) => {
     const [editingId, setEditingId] = useState(null);
     const [editFormData, setEditFormData] = useState({});
 
-    useEffect(() => {
-        fetchApplications();
-
-    }, [refreshTrigger]);
-
-    useEffect(() => {
         const fetchApplications = async () => {
             try{
                 const response = await axios.get('http://localhost:8080/api/applications');
@@ -25,7 +19,10 @@ const ApplicationTable = ({refreshTrigger, onDataChange}) => {
                 console.error('Error fetching applications: ', error);
             }
         };
+        
+        useEffect(() => {
         fetchApplications();
+
     }, [refreshTrigger]);
 
     const handleDelete = async (id) => {
@@ -82,17 +79,50 @@ const ApplicationTable = ({refreshTrigger, onDataChange}) => {
                     <tbody>
                         {applications.map((app) => (
                             <tr key = {app.id}>
-                                <td className={styles.td}>{app.company}</td>
-                                <td className={styles.td}>{app.role}</td>
-                                <td className={styles.td}>{app.appliedDate}</td>
-                                <td className={`${styles.td} ${styles.statusCell}`}>{app.status}</td>
+                                {editingId === app.id ? (
+                                    <>
+                                        <td className={styles.td}>
+                                            <input name = "company" value={editFormData.company} onChange={handleEditFormChange} className={styles.editInput} />
+                                        </td>
+                                        <td className={styles.td}>
+                                            <input name="role" value={editFormData.role} onChange={handleEditFormChange} className={styles.editInput} />
+                                        </td>
+                                        <td className={styles.td}>
+                                            <input type="date" name="appliedDate" value={editFormData.appliedDate} onChange={handleEditFormChange} className={styles.editInput} />
+                                        </td>
+                                        <td className={styles.td}>
+                                            <select name="status" value={editFormData.status} onChange={handleEditFormChange} className={styles.editSelect}>
+                                                <option value="Applied">Applied</option>
+                                                <option value="Interviewing">Interviewing</option>
+                                                <option value="Offer">Offer</option>
+                                                <option value="Rejected">Rejected</option>
+                                                <option value="Ghosted">Ghosted</option>
+                                            </select>
+                                        </td>
+                                        <td className={`${styles.td} ${styles.actionsCell}`}>
+                                            <button onClick={handleSaveEdit} className={styles.actionBtn} title="Save"><Check size={18} color="#A04F2B" /></button>
+                                            <button onClick={() => setEditingId(null)} className={styles.actionBtn} title="Cancel"><X size={18} /></button>
+                                        </td>
+                                    </>
+                                ) : (
+                                    <>
+                                    <td className={styles.td}>{app.company}</td>
+                                    <td className={styles.td}>{app.role}</td>
+                                    <td className={styles.td}>{app.appliedDate}</td>
+                                    <td className={`${styles.td} ${styles.statusCell}`}>{app.status}</td>
+                                    <td className={`${styles.td} ${styles.actionsCell}`}>
+                                        <button onClick={() => handleEditClick(app)} className={styles.actionBtn} title="Edit"><Edit2 size={16} /></button>
+                                        <button onClick={() => handleDelete(app.id)} className={`${styles.actionBtn} ${styles.deleteBtn}`} title="Delete"><Trash2 size={16} /></button>
+                                    </td>
+                                    </>
+                                )}
                             </tr>
                         ))}
                     </tbody>
                 </table>
             )}
-        </div>
-    );
+    </div>
+  );
 };
 
 export default ApplicationTable;
